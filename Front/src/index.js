@@ -5,13 +5,22 @@ import App from './componentes/App';
 import reportWebVitals from './reportWebVitals';
 import ListaDeTareas from './tareasLista'
 import TareasForm from './componentes/tareasForm'
+import {tareasIniciales as data} from './componentes/tareas'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
+function App(){
+  const[tareas, setTareas ]= useState([])
+    useEffect (() =>{setTareas(data)}, [])
+}
+
   <React.StrictMode>
-    <App/>
+    
     <TareasForm/>
     <ListaDeTareas/>
+    
   </React.StrictMode>
 );
 
