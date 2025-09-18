@@ -1,0 +1,103 @@
+src/
++-- components/           # Componentes reutilizables
+¦   +-- common/          # Componentes genéricos
+¦   ¦   +-- Button/
+¦   ¦   +-- Modal/
+¦   ¦   +-- LoadingSpinner/
+¦   ¦   +-- FormField/
+¦   ¦   +-- Avatar/
+¦   +-- layout/          # Componentes de layout
+¦   ¦   +-- Header/
+¦   ¦   +-- Sidebar/
+¦   ¦   +-- Footer/
+¦   ¦   +-- Navigation/
+¦   +-- ui/              # Componentes específicos de UI
+¦       +-- ChazaCard/
+¦       +-- PropuestaCard/
+¦       +-- HorarioSelector/
+¦       +-- NotificationBadge/
++-- pages/               # Páginas principales
+¦   +-- auth/
+¦   ¦   +-- Login.jsx
+¦   ¦   +-- Register.jsx
+¦   ¦   +-- ForgotPassword.jsx
+¦   +-- chazero/         # Páginas para dueños de chazas
+¦   ¦   +-- Dashboard.jsx
+¦   ¦   +-- MisChazas.jsx
+¦   ¦   +-- CrearChaza.jsx
+¦   ¦   +-- EditarChaza.jsx
+¦   ¦   +-- GestionarHorarios.jsx
+¦   ¦   +-- Propuestas.jsx
+¦   +-- trabajador/      # Páginas para buscadores de trabajo
+¦   ¦   +-- Dashboard.jsx
+¦   ¦   +-- BuscarChazas.jsx
+¦   ¦   +-- MisPropuestas.jsx
+¦   ¦   +-- Perfil.jsx
+¦   +-- shared/          # Páginas compartidas
+¦       +-- Home.jsx
+¦       +-- About.jsx
+¦       +-- Contact.jsx
++-- features/            # Lógica de funcionalidades
+¦   +-- auth/
+¦   ¦   +-- hooks/
+¦   ¦   ¦   +-- useAuth.js
+¦   ¦   ¦   +-- useLogin.js
+¦   ¦   +-- services/
+¦   ¦   ¦   +-- authService.js
+¦   ¦   +-- types/
+¦   ¦       +-- authTypes.js
+¦   +-- chazas/
+¦   ¦   +-- hooks/
+¦   ¦   ¦   +-- useChazas.js
+¦   ¦   ¦   +-- useCreateChaza.js
+¦   ¦   ¦   +-- useUpdateChaza.js
+¦   ¦   +-- services/
+¦   ¦   ¦   +-- chazasService.js
+¦   ¦   +-- types/
+¦   ¦       +-- chazaTypes.js
+¦   +-- propuestas/
+¦   ¦   +-- hooks/
+¦   ¦   ¦   +-- usePropuestas.js
+¦   ¦   ¦   +-- useCreatePropuesta.js
+¦   ¦   ¦   +-- useUpdatePropuesta.js
+¦   ¦   +-- services/
+¦   ¦   ¦   +-- propuestasService.js
+¦   ¦   +-- types/
+¦   ¦       +-- propuestaTypes.js
+¦   +-- horarios/
+¦       +-- hooks/
+¦       ¦   +-- useHorarios.js
+¦       +-- services/
+¦       ¦   +-- horariosService.js
+¦       +-- utils/
+¦           +-- horarioHelpers.js
++-- hooks/               # Hooks globales/compartidos
+¦   +-- useLocalStorage.js
+¦   +-- useDebounce.js
+¦   +-- useModal.js
+¦   +-- useNotifications.js
++-- context/             # Context API para estado global
+¦   +-- AuthContext.jsx
+¦   +-- NotificationContext.jsx
+¦   +-- ThemeContext.jsx
++-- utils/               # Utilidades generales
+¦   +-- api.js           # Configuración de axios
+¦   +-- constants.js     # Constantes de la app
+¦   +-- formatters.js    # Formateo de datos
+¦   +-- validators.js    # Validaciones
+¦   +-- helpers.js       # Funciones de ayuda
++-- styles/              # Estilos globales
+¦   +-- globals.css
+¦   +-- variables.css
+¦   +-- components.css
++-- assets/              # Recursos estáticos
+¦   +-- images/
+¦   +-- icons/
+¦   +-- fonts/
++-- config/              # Configuraciones
+¦   +-- routes.js
+¦   +-- environment.js
++-- types/               # Tipos TypeScript (si usas TS)
+    +-- user.ts
+    +-- chaza.ts
+    +-- propuesta.ts
