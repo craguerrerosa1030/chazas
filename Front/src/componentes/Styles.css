@@ -287,3 +287,281 @@
       align-items: center;
     }
   }
+  /* ========== NAVEGACIÓN RESPONSIVE ========== */
+
+/* Botón hamburguesa - Oculto por defecto en desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Estilos base de navegación (desktop) */
+.navigation ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+}
+
+.navigation button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.navigation button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navigation button.active {
+  background-color: #3498db;
+}
+
+/* ========== MOBILE STYLES ========== */
+@media (max-width: 768px) {
+  
+  /* Mostrar botón hamburguesa en móvil */
+  .menu-toggle {
+    display: block;
+  }
+  
+  /* Ocultar navegación por defecto en móvil */
+  .navigation {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #2c3e50;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Mostrar navegación cuando está abierta */
+  .navigation-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Cambiar layout a vertical en móvil */
+  .navigation ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+  }
+  
+  /* Botones ocupan todo el ancho en móvil */
+  .navigation button {
+    width: 100%;
+    text-align: left;
+    padding: 1rem 2rem;
+    border-radius: 0;
+  }
+  
+  /* Efecto hover más visible en móvil */
+  .navigation button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Header necesita position relative para el menú absoluto */
+  .header {
+    position: relative;
+  }
+}
+
+/* Tablet - Tamaño intermedio */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .navigation ul {
+    gap: 1rem;
+  }
+  
+  .navigation button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ========== CHAZAS GRID ========== */
+
+.chazas-grid-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.chazas-grid-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.chazas-grid-header h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.chazas-grid-header p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grid principal */
+.chazas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Tarjeta individual */
+.chaza-grid-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chaza-grid-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+/* Imagen de la chaza */
+.chaza-image-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.chaza-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.chaza-grid-card:hover .chaza-image {
+  transform: scale(1.05);
+}
+
+/* Estado de disponibilidad */
+.chaza-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.chaza-status.disponible {
+  background-color: #27ae60;
+  color: white;
+}
+
+.chaza-status.ocupado {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* Información de la chaza */
+.chaza-info {
+  padding: 1.5rem;
+}
+
+.chaza-nombre {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.chaza-details {
+  margin-bottom: 1.5rem;
+}
+
+.chaza-details p {
+  margin: 0.5rem 0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.chaza-ubicacion,
+.chaza-horarios {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botón de ver detalles */
+.chaza-ver-btn {
+  width: 100%;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.chaza-ver-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Footer del grid */
+.chazas-grid-footer {
+  text-align: center;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .chazas-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .chazas-grid-header h2 {
+    font-size: 2rem;
+  }
+  
+  .chaza-image-container {
+    height: 180px;
+  }
+  
+  .chaza-info {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chazas-grid-section {
+    padding: 2rem 0;
+  }
+  
+  .chazas-grid {
+    gap: 1rem;
+  }
+  
+  .chaza-image-container {
+    height: 160px;
+  }
+}
