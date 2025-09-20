@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {AuthProvider} from './context/AuthContext';
 import Header from './componentes/Header';
 import Home from './paginas/Home';
 import Login from './paginas/Login';
@@ -31,12 +32,15 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <AuthProvider>
+      <div className="App">
       <Header onNavegar={cambiarPagina} paginaActual={paginaActual} />
       <main>
         {renderizarPagina()}
       </main>
     </div>
+    </AuthProvider>
+    
   );
 }
 

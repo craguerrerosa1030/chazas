@@ -1,35 +1,84 @@
 import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 
-function Registro() {
+function Registro({ onNavegar }) {
+  const { register } = useAuth();
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
     password: '',
     confirmPassword: '',
-    tipoUsuario: 'estudiante' // 'estudiante' o 'chazero'
+    tipoUsuario: 'estudiante'
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Limpiar error cuando el usuario empiece a escribir
+    if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    // Validaciones básicas
     if (formData.password !== formData.confirmPassword) {
-      alert('Las contraseñas no coinciden');
+      setError('Las contraseñas no coinciden');
+      setLoading(false);
       return;
     }
-    console.log('Datos de registro:', formData);
-    // Aquí irá la lógica de registro
+
+    if (formData.password.length < 4) {
+      setError('La contraseña debe tener al menos 4 caracteres');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      console.log('Intentando registrar:', formData); // Para debug
+      
+      const result = await register({
+        nombre: formData.nombre,
+        email: formData.email,
+        password: formData.password,
+        tipoUsuario: formData.tipoUsuario
+      });
+      
+      console.log('Resultado del registro:', result); // Para debug
+
+      if (result.success) {
+        // Registro exitoso - ir al dashboard
+        console.log('¡Registro exitoso! Redirigiendo...');
+        onNavegar('dashboard');
+      } else {
+        // Mostrar error
+        setError(result.error);
+      }
+    } catch (err) {
+      console.error('Error en el registro:', err);
+      setError('Error inesperado. Intenta de nuevo.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="auth-page">
       <div className="auth-container">
         <h2>Crear Cuenta</h2>
+        
+        {error && (
+          <div className="error-message">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
             <label htmlFor="tipoUsuario">¿Qué eres?</label>
@@ -38,6 +87,7 @@ function Registro() {
               name="tipoUsuario"
               value={formData.tipoUsuario}
               onChange={handleChange}
+              disabled={loading}
             >
               <option value="estudiante">Estudiante (busco trabajo)</option>
               <option value="chazero">Chazero (tengo una chaza)</option>
@@ -53,6 +103,8 @@ function Registro() {
               value={formData.nombre}
               onChange={handleChange}
               required
+              disabled={loading}
+              placeholder="Ej: María García"
             />
           </div>
           
@@ -65,6 +117,8 @@ function Registro() {
               value={formData.email}
               onChange={handleChange}
               required
+              disabled={loading}
+              placeholder="tu@email.com"
             />
           </div>
           
@@ -77,6 +131,8 @@ function Registro() {
               value={formData.password}
               onChange={handleChange}
               required
+              disabled={loading}
+              placeholder="Mínimo 4 caracteres"
             />
           </div>
           
@@ -89,16 +145,29 @@ function Registro() {
               value={formData.confirmPassword}
               onChange={handleChange}
               required
+              disabled={loading}
+              placeholder="Repite la contraseña"
             />
           </div>
           
-          <button type="submit" className="btn btn-primary">
-            Crear Cuenta
+          <button 
+            type="submit" 
+            className="btn btn-primary"
+            disabled={loading}
+          >
+            {loading ? 'Creando cuenta...' : 'Crear Cuenta'}
           </button>
         </form>
         
         <p className="auth-link">
-          ¿Ya tienes cuenta? <a href="/login">Inicia sesión aquí</a>
+          ¿Ya tienes cuenta? 
+          <button 
+            onClick={() => onNavegar('login')}
+            className="link-button"
+            disabled={loading}
+          >
+            Inicia sesión aquí
+          </button>
         </p>
       </div>
     </div>
