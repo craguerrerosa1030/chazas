@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ChazaModal from './ChazaModal';
 
 function ChazasGrid({ onNavegar }) {
-  // Datos simulados de chazas destacadas
+  const [modalAbierto, setModalAbierto] = useState(false);
+  const [chazaSeleccionada, setChazaSeleccionada] = useState(null);
+
+  // Datos simulados más completos
   const chazasDestacadas = [
     {
       id: 1,
@@ -9,7 +13,26 @@ function ChazasGrid({ onNavegar }) {
       ubicacion: "Cerca a la Universidad",
       imagen: "https://www.las2orillas.co/wp-content/uploads/2015/06/FullSizeRender.jpg",
       horarios: "6AM - 2PM",
-      disponible: true
+      disponible: true,
+      dueno: {
+        nombre: "Mario González",
+        email: "mario.gonzalez@email.com"
+      },
+      productos: [
+        "Desayunos", "Almuerzos", "Jugos naturales", "Café", "Empanadas", "Arepas"
+      ],
+      horariosDisponibles: [
+        // Lunes
+        "Lunes-06:00", "Lunes-06:30", "Lunes-07:00", "Lunes-11:30", "Lunes-12:00",
+        // Martes
+        "Martes-06:00", "Martes-06:30", "Martes-12:00", "Martes-12:30",
+        // Miércoles
+        "Miércoles-07:00", "Miércoles-07:30", "Miércoles-13:00",
+        // Jueves
+        "Jueves-06:00", "Jueves-11:30", "Jueves-12:00", "Jueves-12:30",
+        // Viernes
+        "Viernes-06:30", "Viernes-07:00", "Viernes-13:00", "Viernes-13:30"
+      ]
     },
     {
       id: 2,
@@ -17,41 +40,34 @@ function ChazasGrid({ onNavegar }) {
       ubicacion: "Frente al SENA",
       imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyw2bzM3Rke1UlDwIe0BQqgdLvE2muq5cu1g&s",
       horarios: "8AM - 4PM",
-      disponible: true
-    },
-    {
-      id: 3,
-      nombre: "Chaza El Buen Sabor",
-      ubicacion: "Centro de la ciudad",
-      imagen: "https://semanariovoz.com/wp-content/uploads/2025/02/chazas.png",
-      horarios: "7AM - 3PM",
-      disponible: false
-    },
-    {
-      id: 4,
-      nombre: "Chaza Los Amigos",
-      ubicacion: "Barrio La Paz",
-      imagen: "https://medellin.unal.edu.co/images/noticias_sede/2018/03/lucho2.jpg",
-      horarios: "5AM - 1PM",
-      disponible: true
-    },
-    {
-      id: 5,
-      nombre: "Chaza Express",
-      ubicacion: "Terminal de buses",
-      imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwDyemqPB__jI8JYjxHAU0o2jubBSpVfbrMg&s",
-      horarios: "24 Horas",
-      disponible: true
-    },
-    {
-      id: 6,
-      nombre: "Chaza Universitaria",
-      ubicacion: "Campus principal",
-      imagen: "https://pbs.twimg.com/media/BK_gOPfCYAAHFcP.jpg:large",
-      horarios: "6AM - 6PM",
-      disponible: true
+      disponible: true,
+      dueno: {
+        nombre: "Ana López",
+        email: "ana.lopez@email.com"
+      },
+      productos: [
+        "Comidas rápidas", "Hamburguesas", "Hot dogs", "Gaseosas", "Papas fritas"
+      ],
+      horariosDisponibles: [
+        "Lunes-08:00", "Lunes-08:30", "Lunes-15:00", "Lunes-15:30",
+        "Martes-08:00", "Martes-14:00", "Martes-14:30", "Martes-15:00",
+        "Miércoles-08:30", "Miércoles-09:00", "Miércoles-15:00",
+        "Jueves-08:00", "Jueves-08:30", "Jueves-14:30", "Jueves-15:00",
+        "Viernes-09:00", "Viernes-09:30", "Viernes-15:00", "Viernes-15:30"
+      ]
     }
+    // ... más chazas
   ];
+
+  const abrirModal = (chaza) => {
+    setChazaSeleccionada(chaza);
+    setModalAbierto(true);
+  };
+
+  const cerrarModal = () => {
+    setModalAbierto(false);
+    setChazaSeleccionada(null);
+  };
 
   return (
     <section className="chazas-grid-section">
@@ -88,7 +104,7 @@ function ChazasGrid({ onNavegar }) {
                 
                 <button 
                   className="chaza-ver-btn"
-                  onClick={() => onNavegar('buscar-chazas')}
+                  onClick={() => abrirModal(chaza)}
                 >
                   Ver detalles
                 </button>
@@ -106,6 +122,13 @@ function ChazasGrid({ onNavegar }) {
           </button>
         </div>
       </div>
+
+      {/* Modal */}
+      <ChazaModal 
+        chaza={chazaSeleccionada}
+        isOpen={modalAbierto}
+        onClose={cerrarModal}
+      />
     </section>
   );
 }
