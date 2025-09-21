@@ -160,3 +160,34 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+// DATOS FIJOS PARA DESARROLLO - Agregar al final del archivo
+const createFixedUsers = () => {
+  const existingUsers = getStoredUsers();
+  
+  // Solo crear si no existen usuarios fijos
+  if (!existingUsers.some(u => u.email === 'estudiante@chazas.com')) {
+    const fixedUsers = [
+      {
+        id: 1,
+        email: 'estudiante@chazas.com',
+        nombre: 'María Estudiante',
+        tipoUsuario: 'estudiante',
+        fechaRegistro: new Date().toISOString(),
+        passwordHash: 'hash_123456'
+      },
+      {
+        id: 2,
+        email: 'chazero@chazas.com',
+        nombre: 'Carlos Chazero',
+        tipoUsuario: 'chazero',
+        fechaRegistro: new Date().toISOString(),
+        passwordHash: 'hash_123456'
+      }
+    ];
+    
+    saveUsers([...existingUsers, ...fixedUsers]);
+  }
+};
+
+// Llamar la función cuando se carga el contexto
+createFixedUsers();
