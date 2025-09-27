@@ -1191,3 +1191,106 @@
 .chaza-result-card {
   position: relative;
 }
+/* ========== BUSCADOR HORARIOS ADICIONAL ========== */
+
+.buscador-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.buscador-header h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.buscador-header p {
+  color: #7f8c8d;
+}
+
+.horarios-seleccionados-resumen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.btn-outline {
+  background: none;
+  border: 2px solid #e74c3c;
+  color: #e74c3c;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-outline:hover {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.horario-selector {
+  margin-top: 1rem;
+}
+
+.selector-instruccion {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.hora-slot.selectable {
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hora-slot.selectable:hover {
+  background-color: #e9ecef;
+}
+
+.hora-slot.selectable.seleccionada {
+  background-color: #3498db;
+  color: white;
+}
+
+.horas-seleccionadas-lista {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #e8f4fd;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+}
+
+.horas-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hora-tag {
+  background-color: #3498db;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.resultados-section {
+  margin-top: 2rem;
+}
+
+.resultados-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.compatibilidad-nota {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}

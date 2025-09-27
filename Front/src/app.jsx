@@ -5,7 +5,7 @@ import Home from './paginas/Home';
 import Login from './paginas/Login';
 import Registro from './paginas/Registro';
 import Dashboard from './paginas/Dashboard';
-import BuscarChazas from './paginas/Buscarchazas';
+import BuscarChazas from './paginas/BuscarChazas';
 
 function App() {
   const [paginaActual, setPaginaActual] = useState('home');

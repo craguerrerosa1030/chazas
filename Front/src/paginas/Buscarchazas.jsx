@@ -130,14 +130,13 @@ function BuscarChazas({ onNavegar }) {
 
         {/* Buscador de horarios - Solo para estudiantes */}
         {isEstudiante() && (
-          <div className="buscador-horarios">
-            <div className="buscador-header">
-              <h3>¿Cuándo puedes trabajar?</h3>
-              <p>Selecciona tus horarios disponibles para encontrar chazas compatibles</p>
-            </div>
-            <div className="horarios-nota">
-              <p>💡 <strong>Tip:</strong> Las chazas se mostrarán ordenadas por compatibilidad con tus horarios</p>
-            </div>
+          <BuscadorHorarios onBuscar={buscarPorHorarios} />
+        )}
+
+        {/* Tip para estudiantes */}
+        {isEstudiante() && (
+          <div className="horarios-nota">
+            <p>💡 <strong>Tip:</strong> Las chazas se mostrarán ordenadas por compatibilidad con tus horarios</p>
           </div>
         )}
 
