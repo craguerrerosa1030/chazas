@@ -1,293 +1,50 @@
+/* ========== RESET Y BASE ========== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  /* Header */
-  .header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  
-  .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo h1 {
-    color: #3498db;
-    font-size: 1.8rem;
-  }
-  
-  /* Navegación */
-  .navigation ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-  }
-  
-  .navigation a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .navigation a:hover {
-    color: #3498db;
-  }
-  
-  /* Botones */
-  .btn {
-    display: inline-block;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 6px;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s;
-  }
-  
-  .btn-primary {
-    background-color: #3498db;
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background-color: #2980b9;
-  }
-  
-  .btn-secondary {
-    background-color: transparent;
-    color: #3498db;
-    border: 2px solid #3498db;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #3498db;
-    color: white;
-  }
-  
-  /* Home page */
-  .hero {
-    text-align: center;
-    padding: 4rem 0;
-    background: linear-gradient(135deg, #3498db, #2c3e50);
-    color: white;
-    margin-bottom: 3rem;
-  }
-  
-  .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-  }
-  
-  .features {
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  
-  .feature {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-  
-  /* Auth pages */
-  .auth-page {
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .auth-container {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .auth-form {
-    margin-top: 1rem;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-  }
-  
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  
-  .auth-link {
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
-  .auth-link a {
-    color: #3498db;
-    text-decoration: none;
-  }
-  
-  /* Dashboard */
-  .dashboard {
-    padding: 2rem 0;
-  }
-  
-  .dashboard-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .dashboard-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  
-  .dashboard-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-  
-  /* Chazas */
-  .buscar-chazas {
-    padding: 2rem 0;
-  }
-  
-  .buscar-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .filtros {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    justify-content: center;
-  }
-  
-  .filtros input,
-  .filtros select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .chazas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-  }
-  
-  .chaza-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    overflow: hidden;
-  }
-  
-  .chaza-card-header {
-    background: #f8f9fa;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .chaza-pago {
-    background: #27ae60;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 500;
-  }
-  
-  .chaza-card-body {
-    padding: 1rem;
-  }
-  
-  .chaza-card-body p {
-    margin-bottom: 0.5rem;
-  }
-  
-  .chaza-card-footer {
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .hero-buttons {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .navigation ul {
-      flex-direction: column;
-      gap: 1rem;
-    }
-    
-    .filtros {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-  /* ========== NAVEGACIÓN RESPONSIVE ========== */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========== HEADER Y NAVEGACIÓN ========== */
+.header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h1 {
+  color: #3498db;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.logo h1:hover {
+  color: #2980b9;
+}
 
 /* Botón hamburguesa - Oculto por defecto en desktop */
 .menu-toggle {
@@ -298,14 +55,21 @@
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
-/* Estilos base de navegación (desktop) */
+.menu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Navegación */
 .navigation ul {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 1rem;
   margin: 0;
+  align-items: center;
 }
 
 .navigation button {
@@ -327,75 +91,874 @@
   background-color: #3498db;
 }
 
-/* ========== MOBILE STYLES ========== */
-@media (max-width: 768px) {
-  
-  /* Mostrar botón hamburguesa en móvil */
-  .menu-toggle {
-    display: block;
-  }
-  
-  /* Ocultar navegación por defecto en móvil */
-  .navigation {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #2c3e50;
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-  
-  /* Mostrar navegación cuando está abierta */
-  .navigation-open {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  /* Cambiar layout a vertical en móvil */
-  .navigation ul {
-    flex-direction: column;
-    gap: 0;
-    padding: 1rem 0;
-  }
-  
-  /* Botones ocupan todo el ancho en móvil */
-  .navigation button {
-    width: 100%;
-    text-align: left;
-    padding: 1rem 2rem;
-    border-radius: 0;
-  }
-  
-  /* Efecto hover más visible en móvil */
-  .navigation button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Header necesita position relative para el menú absoluto */
-  .header {
-    position: relative;
-  }
+/* Botón especial "Crear Chaza" */
+.crear-chaza-btn {
+  background-color: #27ae60 !important;
+  font-weight: 600;
 }
 
-/* Tablet - Tamaño intermedio */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .navigation ul {
-    gap: 1rem;
-  }
-  
-  .navigation button {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.9rem;
-  }
+.crear-chaza-btn:hover {
+  background-color: #219a52 !important;
+}
+
+/* Menú de usuario */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-greeting {
+  font-size: 0.9rem;
+  color: #ecf0f1;
+}
+
+.logout-btn {
+  background-color: #e74c3c !important;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b !important;
+}
+
+/* ========== BOTONES ========== */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+  text-align: center;
+  font-family: inherit;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #3498db;
+  border: 2px solid #3498db;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-success {
+  background-color: #27ae60;
+  color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: #219a52;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
+.btn-warning {
+  background-color: #f39c12;
+  color: white;
+}
+
+.btn-warning:hover:not(:disabled) {
+  background-color: #d68910;
+}
+
+.btn-outline {
+  background: none;
+  border: 2px solid #bdc3c7;
+  color: #7f8c8d;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: #bdc3c7;
+  color: white;
+}
+
+/* Tamaños de botones */
+.btn-small {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+}
+
+.btn-large {
+  padding: 16px 32px;
+  font-size: 1.1rem;
+}
+
+/* Botones tipo link */
+.link-button {
+  background: none;
+  border: none;
+  color: #3498db;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin-left: 5px;
+  font-size: inherit;
+}
+
+.link-button:hover {
+  color: #2980b9;
+}
+
+/* ========== HOME PAGE ========== */
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* ========== PÁGINAS DE AUTENTICACIÓN ========== */
+.auth-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.auth-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-form {
+  margin-top: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.auth-link a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+/* Mensajes de error */
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #fcc;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ========== DASHBOARD ========== */
+.dashboard {
+  padding: 2rem 0;
+  min-height: 80vh;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.user-type {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.dashboard-card h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+/* Tarjetas de estadísticas */
+.stats-card {
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: white;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Listas de propuestas */
+.propuestas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.propuesta-item {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fafafa;
+  transition: box-shadow 0.3s;
+}
+
+.propuesta-item:hover {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.propuesta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.propuesta-header h4 {
+  color: #2c3e50;
+  margin-bottom: 0.25rem;
+}
+
+.propuesta-details p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.propuesta-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Estados de propuestas */
+.estado-badge {
+  padding: 0.3rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+}
+
+/* Estados vacíos */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.empty-state h3, .empty-state h4 {
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  color: #95a5a6;
+  margin-bottom: 1.5rem;
+}
+
+.empty-state .tip {
+  color: #17a2b8;
+  font-style: italic;
+}
+
+/* Acciones rápidas */
+.quick-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ========== PÁGINAS ESPECÍFICAS ========== */
+
+/* Página de carga */
+.loading-page, .loading-message {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-content {
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 1rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Página de acceso denegado */
+.access-denied {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.access-denied h1 {
+  color: #e74c3c;
+  margin-bottom: 1rem;
+}
+
+/* Página de error */
+.error-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-content {
+  text-align: center;
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* ========== MIS POSTULACIONES / MIS CHAZAS ========== */
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+/* Estadísticas overview */
+.stats-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #3498db;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+/* Filtros */
+.filtros-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.filtros-section h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.filtros-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #bdc3c7;
+  background: white;
+  color: #7f8c8d;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.filtro-btn:hover {
+  border-color: #3498db;
+  color: #3498db;
+}
+
+.filtro-btn.active {
+  background-color: #3498db;
+  border-color: #3498db;
+  color: white;
+}
+
+/* Propuestas cards */
+.propuesta-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.propuesta-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+}
+
+.propuesta-title h4 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+
+.propuesta-location {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.propuesta-content {
+  margin: 1rem 0;
+}
+
+.propuesta-info p {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* Mensajes en propuestas */
+.mensaje-enviado, .mensaje-estudiante {
+  background: #f8f9fa;
+  border-left: 4px solid #3498db;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+}
+
+.mensaje-estudiante {
+  background: #e8f4fd;
+  border-color: #17a2b8;
+}
+
+.mensaje-content {
+  font-style: italic;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+/* Horarios */
+.horarios-solicitados {
+  margin-top: 1rem;
+}
+
+.horarios-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.horario-tag {
+  background-color: #3498db;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.horarios-grid-small {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.horario-tag-small {
+  background-color: #17a2b8;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+/* Mensajes de estado */
+.success-message {
+  background: #d5e8d4;
+  border: 1px solid #5cb85c;
+  color: #3c763d;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.rejection-message {
+  background: #f2dede;
+  border: 1px solid #d43f3a;
+  color: #a94442;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.status-message {
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.status-message.accepted {
+  background: #d5e8d4;
+  border: 1px solid #5cb85c;
+  color: #3c763d;
+}
+
+.status-message.rejected {
+  background: #f2dede;
+  border: 1px solid #d43f3a;
+  color: #a94442;
+}
+
+/* Vista navigation */
+.vista-navigation {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.vista-btn {
+  padding: 1rem 2rem;
+  border: 2px solid #bdc3c7;
+  background: white;
+  color: #7f8c8d;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.vista-btn:hover {
+  border-color: #3498db;
+  color: #3498db;
+}
+
+.vista-btn.active {
+  background-color: #3498db;
+  border-color: #3498db;
+  color: white;
+}
+
+/* Secciones */
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h3 {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+/* Propuestas para chazeros */
+.chazero-card {
+  border-left: 4px solid #3498db;
+}
+
+.estudiante-info h4 {
+  color: #2c3e50;
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.estudiante-email {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.fecha-respuesta {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Botones de acción */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Chazas admin */
+.chaza-card.admin-card {
+  border: 1px solid #dee2e6;
+  background: linear-gradient(to right, #ffffff, #f8f9fa);
+}
+
+.chaza-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.chaza-title h4 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+
+.status-indicator {
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-indicator.active {
+  background: #d5e8d4;
+  color: #3c763d;
+}
+
+.status-indicator.inactive {
+  background: #f2dede;
+  color: #a94442;
+}
+
+.chaza-stats-mini {
+  display: flex;
+  gap: 1rem;
+}
+
+.stat-mini {
+  background: #e9ecef;
+  color: #495057;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.chaza-content {
+  margin-bottom: 1.5rem;
+}
+
+.productos-chaza {
+  margin: 1rem 0;
+}
+
+.productos-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.producto-tag-small {
+  background-color: #6f42c1;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+.chaza-statistics {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.chaza-statistics h5 {
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.chaza-statistics ul {
+  list-style: none;
+  margin: 0;
+}
+
+.chaza-statistics li {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.chaza-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Acciones generales */
+.actions-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.actions-section .btn {
+  margin: 0 0.5rem;
 }
 
 /* ========== CHAZAS GRID ========== */
-
 .chazas-grid-section {
   padding: 4rem 0;
   background-color: #f8f9fa;
@@ -419,7 +982,6 @@
   margin: 0 auto;
 }
 
-/* Grid principal */
 .chazas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -427,7 +989,6 @@
   margin-bottom: 3rem;
 }
 
-/* Tarjeta individual */
 .chaza-grid-card {
   background: white;
   border-radius: 12px;
@@ -441,7 +1002,6 @@
   box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
-/* Imagen de la chaza */
 .chaza-image-container {
   position: relative;
   height: 200px;
@@ -459,7 +1019,6 @@
   transform: scale(1.05);
 }
 
-/* Estado de disponibilidad */
 .chaza-status {
   position: absolute;
   top: 10px;
@@ -481,7 +1040,6 @@
   color: white;
 }
 
-/* Información de la chaza */
 .chaza-info {
   padding: 1.5rem;
 }
@@ -510,7 +1068,6 @@
   gap: 0.5rem;
 }
 
-/* Botón de ver detalles */
 .chaza-ver-btn {
   width: 100%;
   background-color: #3498db;
@@ -527,20 +1084,793 @@
   background-color: #2980b9;
 }
 
-/* Footer del grid */
 .chazas-grid-footer {
   text-align: center;
 }
 
-/* Responsive para móviles */
+/* ========== MODAL ========== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #eee;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.modal-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.chaza-info-section,
+.productos-section,
+.horario-section,
+.postulacion-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.chaza-info-section:last-child,
+.productos-section:last-child,
+.horario-section:last-child,
+.postulacion-section:last-child {
+  border-bottom: none;
+}
+
+.chaza-info-section h3,
+.productos-section h3,
+.horario-section h3,
+.postulacion-section h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.owner-info p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.productos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.no-data {
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.producto-tag {
+  background-color: #3498db;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.horario-instruccion {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.horario-grid {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.horario-header {
+  display: grid;
+  grid-template-columns: 80px repeat(5, 1fr);
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #ddd;
+}
+
+.dia-header {
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: #2c3e50;
+  border-right: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+.horario-row {
+  display: grid;
+  grid-template-columns: 80px repeat(5, 1fr);
+  border-bottom: 1px solid #eee;
+}
+
+.hora-cell {
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+  font-size: 0.8rem;
+  color: #2c3e50;
+}
+
+.hora-slot {
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+  border-right: 1px solid #eee;
+  cursor: default;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hora-slot.disponible {
+  background-color: #e8f5e8;
+  cursor: pointer;
+}
+
+.hora-slot.disponible:hover {
+  background-color: #d4edda;
+}
+
+.hora-slot.seleccionada {
+  background-color: #3498db;
+  color: white;
+}
+
+.slot-indicator {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Postulación */
+.horas-seleccionadas {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+.horas-list {
+  margin-top: 1rem;
+}
+
+.horas-preview {
+  margin-bottom: 0.5rem;
+}
+
+.horas-tags-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hora-selected {
+  background-color: #3498db;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
+.mensaje-propuesta {
+  margin-bottom: 1rem;
+}
+
+.mensaje-propuesta label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.mensaje-propuesta textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.mensaje-helper {
+  color: #6c757d;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.envio-section {
+  margin-bottom: 1rem;
+}
+
+.validation-message {
+  color: #f39c12;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.info-adicional {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #17a2b8;
+}
+
+.info-adicional h4 {
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.info-adicional ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.info-adicional li {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Auth required y chazero message */
+.auth-required,
+.chazero-message {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #bdc3c7;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* ========== CREAR CHAZA ========== */
+.crear-chaza {
+  padding: 2rem 0;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.chaza-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Secciones del formulario */
+.form-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.form-section h3 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+/* Filas del formulario */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-row .form-group.flex-grow {
+  grid-column: 1;
+}
+
+/* Grupos de formulario mejorados */
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #e1e8ed;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: #e74c3c;
+  background-color: #fdf2f2;
+}
+
+.error-text {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Productos */
+.agregar-producto {
+  margin-bottom: 1.5rem;
+}
+
+.productos-sugeridos {
+  margin-bottom: 1.5rem;
+}
+
+.productos-sugeridos p {
+  margin-bottom: 0.5rem;
+  color: #7f8c8d;
+}
+
+.productos-sugeridos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.producto-sugerido {
+  background: #ecf0f1;
+  border: 1px solid #bdc3c7;
+  color: #2c3e50;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+
+.producto-sugerido:hover {
+  background: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+
+.productos-agregados {
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #f8f9fa;
+}
+
+.productos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.producto-item {
+  background: #3498db;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.remover-producto {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.7rem;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.remover-producto:hover {
+  opacity: 1;
+}
+
+/* Editor de horarios */
+.editor-horarios {
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #f8f9fa;
+}
+
+.horario-grid-editor {
+  margin-top: 1rem;
+}
+
+.editor-instrucciones {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.horarios-seleccionados-resumen {
+  background: #e8f4fd;
+  border: 1px solid #bee5eb;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.horarios-resumen {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.horarios-tags-small {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.horario-tag-mini {
+  background: #17a2b8;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+}
+
+.horarios-mas {
+  color: #6c757d;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+/* Hora slots en editor */
+.hora-slot.selectable {
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.hora-slot.selectable:hover {
+  background-color: #e9ecef;
+  border-color: #3498db;
+}
+
+.hora-slot.selectable.seleccionada {
+  background-color: #27ae60;
+  color: white;
+  border-color: #219a52;
+}
+
+.hora-slot.selectable.seleccionada:hover {
+  background-color: #219a52;
+}
+
+/* Upload de imagen */
+.imagen-upload {
+  margin-bottom: 1rem;
+}
+
+.imagen-input {
+  display: none;
+}
+
+.imagen-label {
+  display: block;
+  cursor: pointer;
+  border: 2px dashed #bdc3c7;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s;
+  background: #fafafa;
+}
+
+.imagen-label:hover {
+  border-color: #3498db;
+  background: #f0f8ff;
+}
+
+.imagen-placeholder {
+  color: #7f8c8d;
+}
+
+.imagen-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.imagen-info {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.imagen-preview {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.imagen-preview img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.imagen-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 8px;
+}
+
+.imagen-preview:hover .imagen-overlay {
+  opacity: 1;
+}
+
+/* Acciones del formulario */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.form-actions .btn {
+  min-width: 150px;
+}
+
+/* Información adicional */
+.info-adicional-chaza {
+  background: #e8f4fd;
+  border: 1px solid #bee5eb;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+.info-adicional-chaza h5 {
+  color: #0c5460;
+  margin-bottom: 0.5rem;
+}
+
+.info-adicional-chaza ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.info-adicional-chaza li {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: #0c5460;
+}
+
+/* Información de chaza */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-item label {
+  margin-bottom: 0.25rem;
+}
+
+.info-item p {
+  margin: 0;
+  color: #555;
+}
+
+.descripcion-chaza {
+  margin: 1rem 0;
+}
+
+/* Horarios disponibles display */
+.horarios-disponibles-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.horarios-disponibles-section h4 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.horarios-display {
+  margin: 1rem 0;
+}
+
+.horarios-tags-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.no-horarios {
+  color: #7f8c8d;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Sin chaza section */
+.no-chaza-section {
+  margin-top: 2rem;
+}
+
+/* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
+  
+  /* Header móvil */
+  .menu-toggle {
+    display: block;
+  }
+  
+  .navigation {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #2c3e50;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .navigation-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .navigation ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+  }
+  
+  .navigation button {
+    width: 100%;
+    text-align: left;
+    padding: 1rem 2rem;
+    border-radius: 0;
+  }
+  
+  .user-menu {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .header {
+    position: relative;
+  }
+  
+  /* Hero */
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Stats */
+  .stats-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Filtros */
+  .filtros-buttons {
+    justify-content: center;
+  }
+  
+  /* Chazas grid */
   .chazas-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-  
-  .chazas-grid-header h2 {
-    font-size: 2rem;
   }
   
   .chaza-image-container {
@@ -550,747 +1880,132 @@
   .chaza-info {
     padding: 1rem;
   }
+  
+  /* Modal */
+  .modal-content {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+  }
+  
+  .horario-header,
+  .horario-row {
+    grid-template-columns: 60px repeat(5, 1fr);
+  }
+  
+  .hora-cell {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.2rem;
+  }
+  
+  .dia-header {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.3rem;
+  }
+  
+  .hora-slot {
+    min-height: 35px;
+    padding: 0.4rem 0.2rem;
+  }
+  
+  /* Vista navigation */
+  .vista-navigation {
+    flex-direction: column;
+  }
+  
+  .vista-btn {
+    padding: 0.8rem 1rem;
+  }
+  
+  /* Actions */
+  .propuesta-actions,
+  .chaza-actions,
+  .action-buttons {
+    justify-content: center;
+  }
+  
+  .quick-actions {
+    justify-content: center;
+  }
+  
+  .auth-buttons {
+    flex-direction: column;
+  }
+  
+  /* Crear chaza responsive */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .productos-sugeridos-grid {
+    justify-content: center;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-actions .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .imagen-preview {
+    max-width: 250px;
+  }
+  
+  .imagen-preview img {
+    height: 150px;
+  }
 }
 
 @media (max-width: 480px) {
-  .chazas-grid-section {
-    padding: 2rem 0;
+  .stats-overview {
+    grid-template-columns: 1fr;
   }
   
-  .chazas-grid {
-    gap: 1rem;
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
   
   .chaza-image-container {
     height: 160px;
   }
-}
-/* ========== MODAL CHAZA ========== */
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 1rem;
-}
-
-.modal-content {
-  background: white;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 900px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  border-bottom: 1px solid #eee;
-  background: linear-gradient(135deg, #3498db, #2c3e50);
-  color: white;
-  border-radius: 12px 12px 0 0;
-}
-
-.modal-header h2 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-
-.modal-close {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.modal-close:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.modal-body {
-  padding: 1.5rem;
-}
-
-/* Secciones del modal */
-.chaza-info-section,
-.productos-section,
-.horario-section,
-.postulacion-section {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #eee;
-}
-
-.chaza-info-section:last-child,
-.productos-section:last-child,
-.horario-section:last-child,
-.postulacion-section:last-child {
-  border-bottom: none;
-}
-
-.chaza-info-section h3,
-.productos-section h3,
-.horario-section h3,
-.postulacion-section h3 {
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-}
-
-/* Información del dueño */
-.owner-info p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
-
-/* Productos */
-.productos-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.producto-tag {
-  background-color: #3498db;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-/* Horario grid */
-.horario-instruccion {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.horario-grid {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.horario-header {
-  display: grid;
-  grid-template-columns: 80px repeat(5, 1fr);
-  background-color: #f8f9fa;
-  border-bottom: 2px solid #ddd;
-}
-
-.dia-header {
-  padding: 0.8rem 0.5rem;
-  text-align: center;
-  font-weight: 600;
-  color: #2c3e50;
-  border-right: 1px solid #ddd;
-  font-size: 0.9rem;
-}
-
-.horario-row {
-  display: grid;
-  grid-template-columns: 80px repeat(5, 1fr);
-  border-bottom: 1px solid #eee;
-}
-
-.hora-cell {
-  padding: 0.6rem 0.5rem;
-  text-align: center;
-  font-weight: 500;
-  background-color: #f8f9fa;
-  border-right: 1px solid #ddd;
-  font-size: 0.8rem;
-  color: #2c3e50;
-}
-
-.hora-slot {
-  padding: 0.6rem 0.5rem;
-  text-align: center;
-  border-right: 1px solid #eee;
-  cursor: default;
-  transition: all 0.3s ease;
-  position: relative;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hora-slot.disponible {
-  background-color: #e8f5e8;
-  cursor: pointer;
-}
-
-.hora-slot.disponible:hover {
-  background-color: #d4edda;
-}
-
-.hora-slot.seleccionada {
-  background-color: #3498db;
-  color: white;
-}
-
-.slot-indicator {
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-/* Sección de postulación */
-.horas-seleccionadas {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 6px;
-}
-
-.horas-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.hora-selected {
-  background-color: #3498db;
-  color: white;
-  padding: 0.3rem 0.6rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-}
-
-.mensaje-propuesta {
-  margin-bottom: 1rem;
-}
-
-.mensaje-propuesta label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.mensaje-propuesta textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  resize: vertical;
-  font-family: inherit;
-}
-
-.auth-required {
-  text-align: center;
-  padding: 2rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .modal-content {
-    margin: 1rem;
-    max-height: calc(100vh - 2rem);
+  
+  .propuesta-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
   
-  .horario-header,
-  .horario-row {
-    grid-template-columns: 60px repeat(5, 1fr);
+  .chaza-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
   
-  .hora-cell {
-    font-size: 0.7rem;
-    padding: 0.4rem 0.2rem;
+  .chaza-stats-mini {
+    align-self: stretch;
+    justify-content: space-between;
   }
   
-  .dia-header {
-    font-size: 0.8rem;
-    padding: 0.6rem 0.3rem;
+  .form-section {
+    padding: 1rem;
   }
   
-  .hora-slot {
-    min-height: 35px;
-    padding: 0.4rem 0.2rem;
+  .crear-chaza {
+    padding: 1rem 0;
   }
   
   .productos-list {
-    gap: 0.3rem;
+    justify-content: center;
   }
   
-  .producto-tag {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
+  .horarios-tags-small {
+    justify-content: center;
   }
-}
-/* ========== MODAL CHAZA ========== */
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 1rem;
-}
-
-.modal-content {
-  background: white;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 900px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  border-bottom: 1px solid #eee;
-  background: linear-gradient(135deg, #3498db, #2c3e50);
-  color: white;
-  border-radius: 12px 12px 0 0;
-}
-
-.modal-header h2 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-
-.modal-close {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.modal-close:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.modal-body {
-  padding: 1.5rem;
-}
-
-/* Secciones del modal */
-.chaza-info-section,
-.productos-section,
-.horario-section,
-.postulacion-section {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #eee;
-}
-
-.chaza-info-section:last-child,
-.productos-section:last-child,
-.horario-section:last-child,
-.postulacion-section:last-child {
-  border-bottom: none;
-}
-
-.chaza-info-section h3,
-.productos-section h3,
-.horario-section h3,
-.postulacion-section h3 {
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-}
-
-/* Información del dueño */
-.owner-info p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
-
-/* Productos */
-.productos-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.producto-tag {
-  background-color: #3498db;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-/* Horario grid */
-.horario-instruccion {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.horario-grid {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.horario-header {
-  display: grid;
-  grid-template-columns: 80px repeat(5, 1fr);
-  background-color: #f8f9fa;
-  border-bottom: 2px solid #ddd;
-}
-
-.dia-header {
-  padding: 0.8rem 0.5rem;
-  text-align: center;
-  font-weight: 600;
-  color: #2c3e50;
-  border-right: 1px solid #ddd;
-  font-size: 0.9rem;
-}
-
-.horario-row {
-  display: grid;
-  grid-template-columns: 80px repeat(5, 1fr);
-  border-bottom: 1px solid #eee;
-}
-
-.hora-cell {
-  padding: 0.6rem 0.5rem;
-  text-align: center;
-  font-weight: 500;
-  background-color: #f8f9fa;
-  border-right: 1px solid #ddd;
-  font-size: 0.8rem;
-  color: #2c3e50;
-}
-
-.hora-slot {
-  padding: 0.6rem 0.5rem;
-  text-align: center;
-  border-right: 1px solid #eee;
-  cursor: default;
-  transition: all 0.3s ease;
-  position: relative;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hora-slot.disponible {
-  background-color: #e8f5e8;
-  cursor: pointer;
-}
-
-.hora-slot.disponible:hover {
-  background-color: #d4edda;
-}
-
-.hora-slot.seleccionada {
-  background-color: #3498db;
-  color: white;
-}
-
-.slot-indicator {
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-/* Sección de postulación */
-.horas-seleccionadas {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 6px;
-}
-
-.horas-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.hora-selected {
-  background-color: #3498db;
-  color: white;
-  padding: 0.3rem 0.6rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-}
-
-.mensaje-propuesta {
-  margin-bottom: 1rem;
-}
-
-.mensaje-propuesta label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.mensaje-propuesta textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  resize: vertical;
-  font-family: inherit;
-}
-
-.auth-required {
-  text-align: center;
-  padding: 2rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .modal-content {
-    margin: 1rem;
-    max-height: calc(100vh - 2rem);
-  }
-  
-  .horario-header,
-  .horario-row {
-    grid-template-columns: 60px repeat(5, 1fr);
-  }
-  
-  .hora-cell {
-    font-size: 0.7rem;
-    padding: 0.4rem 0.2rem;
-  }
-  
-  .dia-header {
-    font-size: 0.8rem;
-    padding: 0.6rem 0.3rem;
-  }
-  
-  .hora-slot {
-    min-height: 35px;
-    padding: 0.4rem 0.2rem;
-  }
-  
-  .productos-list {
-    gap: 0.3rem;
-  }
-  
-  .producto-tag {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
-  }
-}
-/* Mensajes de error */
-.error-message {
-  background-color: #fee;
-  color: #c33;
-  padding: 0.75rem;
-  border-radius: 4px;
-  border: 1px solid #fcc;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-/* Botones tipo link */
-.link-button {
-  background: none;
-  border: none;
-  color: #3498db;
-  cursor: pointer;
-  text-decoration: underline;
-  padding: 0;
-  margin-left: 5px;
-  font-size: inherit;
-}
-
-.link-button:hover {
-  color: #2980b9;
-}
-
-/* Buscador de horarios */
-.buscador-horarios {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-.horarios-nota {
-  text-align: center;
-  padding: 1rem;
-  background-color: #e8f5e8;
-  border-radius: 8px;
-  margin: 1rem 0;
-}
-
-.sin-resultados {
-  text-align: center;
-  padding: 3rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.compatibilidad-info {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.compatibilidad-badge {
-  background-color: #27ae60;
-  color: white;
-  padding: 0.3rem 0.6rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  text-align: center;
-}
-
-.porcentaje-compatibilidad {
-  background-color: #3498db;
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  text-align: center;
-}
-
-.chaza-result-card {
-  position: relative;
-}
-/* ========== BUSCADOR HORARIOS ADICIONAL ========== */
-
-.buscador-header {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.buscador-header h3 {
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-}
-
-.buscador-header p {
-  color: #7f8c8d;
-}
-
-.horarios-seleccionados-resumen {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-}
-
-.btn-outline {
-  background: none;
-  border: 2px solid #e74c3c;
-  color: #e74c3c;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.btn-outline:hover {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.horario-selector {
-  margin-top: 1rem;
-}
-
-.selector-instruccion {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.hora-slot.selectable {
-  background-color: #f8f9fa;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.hora-slot.selectable:hover {
-  background-color: #e9ecef;
-}
-
-.hora-slot.selectable.seleccionada {
-  background-color: #3498db;
-  color: white;
-}
-
-.horas-seleccionadas-lista {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background-color: #e8f4fd;
-  border-radius: 8px;
-  border-left: 4px solid #3498db;
-}
-
-.horas-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.hora-tag {
-  background-color: #3498db;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.resultados-section {
-  margin-top: 2rem;
-}
-
-.resultados-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.compatibilidad-nota {
-  color: #7f8c8d;
-  font-size: 0.9rem;
 }
