@@ -1,0 +1,105 @@
+﻿chazas-backend/
+│
+├── venv/                                    ← Entorno virtual (NO versionar)
+│
+├── app/                                     ← Carpeta principal de la app
+│   ├── __init__.py
+│   ├── main.py                              ← ⭐ Punto de entrada (FastAPI)
+│   ├── config.py                            ← Configuraciones globales
+│   │
+│   ├── core/                                ← Componentes base
+│   │   ├── __init__.py
+│   │   ├── security.py                      ← Hash, JWT, tokens
+│   │   └── constants.py                     ← Constantes de la app
+│   │
+│   ├── database/                            ← Base de datos
+│   │   ├── __init__.py
+│   │   ├── session.py                       ← Conexión a BD
+│   │   └── init_db.py                       ← Inicializar tablas
+│   │
+│   ├── models/                              ← Modelos SQLAlchemy
+│   │   ├── __init__.py
+│   │   ├── base.py                          ← Base compartida
+│   │   ├── user.py                          ← Modelo Usuario
+│   │   ├── chaza.py                         ← Modelo Chaza
+│   │   └── propuesta.py                     ← Modelo Propuesta
+│   │
+│   ├── schemas/                             ← Validación Pydantic
+│   │   ├── __init__.py
+│   │   ├── user.py                          ← UserCreate, UserResponse
+│   │   ├── chaza.py                         ← ChazaCreate, ChazaResponse
+│   │   ├── propuesta.py                     ← PropuestaCreate, PropuestaResponse
+│   │   └── common.py                        ← Respuestas genéricas
+│   │
+│   ├── business/                            ← ⭐ LÓGICA DE NEGOCIO
+│   │   ├── __init__.py
+│   │   ├── auth_business.py                 ← Lógica de autenticación
+│   │   ├── chaza_business.py                ← Lógica de chazas
+│   │   ├── propuesta_business.py            ← Lógica de propuestas
+│   │   ├── upload_business.py               ← Lógica de upload de imágenes
+│   │   └── validations_business.py          ← Validaciones de negocio
+│   │
+│   ├── repository/                          ← Acceso a datos (CRUD)
+│   │   ├── __init__.py
+│   │   ├── base_repository.py               ← Base para repos
+│   │   ├── user_repository.py               ← Operaciones con usuarios
+│   │   ├── chaza_repository.py              ← Operaciones con chazas
+│   │   └── propuesta_repository.py          ← Operaciones con propuestas
+│   │
+│   ├── api/                                 ← Rutas/Endpoints
+│   │   ├── __init__.py
+│   │   └── v1/                              ← Versión 1 de API
+│   │       ├── __init__.py
+│   │       ├── router.py                    ← Agregador de rutas
+│   │       ├── auth_routes.py               ← Endpoints de auth
+│   │       ├── chaza_routes.py              ← Endpoints de chazas
+│   │       ├── propuesta_routes.py          ← Endpoints de propuestas
+│   │       └── upload_routes.py             ← Endpoints de upload
+│   │
+│   ├── dependencies/                        ← Inyecciones de dependencias
+│   │   ├── __init__.py
+│   │   ├── auth_dependency.py               ← Autenticación
+│   │   ├── database_dependency.py           ← Sesión BD
+│   │   └── business_dependency.py           ← Instancias de business
+│   │
+│   ├── utils/                               ← Funciones auxiliares
+│   │   ├── __init__.py
+│   │   ├── validators.py                    ← Validaciones custom
+│   │   ├── formatters.py                    ← Formato de datos
+│   │   ├── file_utils.py                    ← Manejo de archivos
+│   │   └── exceptions.py                    ← Excepciones custom
+│   │
+│   └── uploads/                             ← Imágenes subidas
+│       └── chazas/
+│
+├── tests/                                   ← Tests unitarios
+│   ├── __init__.py
+│   ├── conftest.py                          ← Configuración pytest
+│   ├── unit/
+│   │   ├── test_auth_business.py
+│   │   ├── test_chaza_business.py
+│   │   └── test_propuesta_business.py
+│   └── integration/
+│       ├── test_auth_routes.py
+│       ├── test_chaza_routes.py
+│       └── test_propuesta_routes.py
+│
+├── migrations/                              ← Alembic (versionamiento BD)
+│   ├── env.py
+│   ├── script.py.mako
+│   └── versions/
+│
+├── logs/                                    ← Logs de la app
+│
+├── .env                                     ← Configuraciones secretas (NO versionar)
+├── .env.example                             ← Plantilla .env (SÍ versionar)
+├── .gitignore
+├── requirements.txt                         ← Dependencias
+├── requirements-dev.txt                     ← Dependencias de desarrollo
+├── docker-compose.yml                       ← Docker (opcional)
+├── Dockerfile                               ← Docker (opcional)
+├── README.md
+└── main.py                                  ← Script para ejecutar
+
+
+
