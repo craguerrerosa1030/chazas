@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+venv/
+env/
+.venv/
+
+# Base de datos local
+*.db
+*.sqlite3
+
+# Uploads locales
+Back/uploads/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Node
+node_modules/
+npm-debug.log*
+
+# React build
+Front/build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+NUL
+
+# Archivos temporales de Claude
+tmpclaude-*
+.claude/
+
+# Archivos de ejemplo/prueba
+*.jpg
+*.jpeg
+*.png
+street-food-truck/

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa Backend Chazas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            padding: 20px;
+            background: white;
+            font-size: 11px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 10px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .modulo {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 12px;
+            background: #fafafa;
+        }
+        .modulo-header {
+            background: #333;
+            color: white;
+            margin: -12px -12px 10px -12px;
+            padding: 8px 12px;
+            border-radius: 6px 6px 0 0;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .funcion {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #ccc;
+            font-size: 10px;
+        }
+        .componente {
+            margin: 8px 0;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+        }
+        .componente-header {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #333;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .archivo {
+            color: #0066cc;
+            font-family: monospace;
+            font-size: 10px;
+            margin-left: 24px;
+        }
+        .descripcion {
+            color: #555;
+            font-size: 10px;
+            margin-left: 24px;
+            margin-top: 3px;
+        }
+        .items {
+            margin-left: 24px;
+            margin-top: 5px;
+            font-size: 10px;
+        }
+        .items li {
+            margin: 2px 0;
+            list-style: none;
+        }
+        .items li:before {
+            content: "• ";
+            color: #999;
+        }
+        .flujo {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .flujo-arrow {
+            font-size: 20px;
+            color: #666;
+        }
+        .flujo-box {
+            display: inline-block;
+            padding: 8px 15px;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 5px;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+        .print-note {
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+            font-size: 10px;
+        }
+        @media print {
+            body { padding: 10px; }
+            .modulo { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <h1>🏭 MAPA BACKEND - CHAZAS</h1>
+
+    <div class="flujo">
+        <span class="flujo-box">Cliente (React)</span>
+        <span class="flujo-arrow">→</span>
+        <span class="flujo-box">FastAPI</span>
+        <span class="flujo-arrow">→</span>
+        <span class="flujo-box">SQLite</span>
+    </div>
+
+    <div class="container" style="margin-top: 20px;">
+
+        <!-- MÓDULO 1 -->
+        <div class="modulo">
+            <div class="modulo-header">M1: CONFIGURACIÓN</div>
+            <div class="funcion">Preparar el entorno antes de arrancar</div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Variables de entorno
+                </div>
+                <div class="archivo">.env</div>
+                <div class="descripcion">Guarda secretos: DATABASE_URL, SECRET_KEY, PORT</div>
+            </div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Lector de configuración
+                </div>
+                <div class="archivo">app/config.py</div>
+                <div class="descripcion">Lee .env y expone variables como objeto Python</div>
+            </div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Punto de entrada
+                </div>
+                <div class="archivo">app/main.py</div>
+                <div class="descripcion">Arranca FastAPI, conecta rutas, configura CORS</div>
+            </div>
+        </div>
+
+        <!-- MÓDULO 2 -->
+        <div class="modulo">
+            <div class="modulo-header">M2: SEGURIDAD</div>
+            <div class="funcion">Verificar identidad y proteger accesos</div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Herramientas de seguridad
+                </div>
+                <div class="archivo">app/core/security.py</div>
+                <ul class="items">
+                    <li>hash_password() → Encripta contraseñas</li>
+                    <li>verify_password() → Compara con hash</li>
+                    <li>create_access_token() → Genera JWT</li>
+                    <li>decode_access_token() → Verifica JWT</li>
+                </ul>
+            </div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Guardias de acceso
+                </div>
+                <div class="archivo">app/api/deps.py</div>
+                <ul class="items">
+                    <li>get_current_user() → Extrae usuario del token</li>
+                    <li>get_current_chazero() → Verifica tipo chazero</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MÓDULO 3 -->
+        <div class="modulo">
+            <div class="modulo-header">M3: BASE DE DATOS</div>
+            <div class="funcion">Conexión y estructura del almacén de datos</div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Conexión SQLite
+                </div>
+                <div class="archivo">app/database/session.py</div>
+                <ul class="items">
+                    <li>engine → Conexión a SQLite</li>
+                    <li>get_db() → Abre/cierra sesiones</li>
+                    <li>init_db() → Crea tablas</li>
+                </ul>
+            </div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Modelo Usuario
+                </div>
+                <div class="archivo">app/models/user.py</div>
+                <div class="descripcion">Tabla users: id, nombre, email, password_hash, tipo_usuario</div>
+            </div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Modelo Chaza
+                </div>
+                <div class="archivo">app/models/chaza.py</div>
+                <div class="descripcion">Tabla chazas: id, titulo, descripcion, owner_id → users.id</div>
+            </div>
+        </div>
+
+        <!-- MÓDULO 4 -->
+        <div class="modulo">
+            <div class="modulo-header">M4: VALIDACIÓN (Schemas)</div>
+            <div class="funcion">Control de calidad de datos entrantes/salientes</div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Schemas de Usuario
+                </div>
+                <div class="archivo">app/schemas/user.py</div>
+                <ul class="items">
+                    <li>UserCreate → nombre, email, password, tipo</li>
+                    <li>UserLogin → email, password</li>
+                    <li>UserResponse → SIN password_hash</li>
+                </ul>
+            </div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Schemas de Chaza
+                </div>
+                <div class="archivo">app/schemas/chaza.py</div>
+                <ul class="items">
+                    <li>ChazaCreate → titulo, descripcion, categoria...</li>
+                    <li>ChazaUpdate → Campos opcionales</li>
+                    <li>ChazaResponse → Todos + owner_id</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MÓDULO 5 -->
+        <div class="modulo">
+            <div class="modulo-header">M5: LÓGICA DE NEGOCIO</div>
+            <div class="funcion">Reglas y procesos de la aplicación</div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Servicio de Autenticación
+                </div>
+                <div class="archivo">app/services/auth_service.py</div>
+                <ul class="items">
+                    <li>register_user() → Valida, hashea, guarda, genera token</li>
+                    <li>login_user() → Busca, verifica password, genera token</li>
+                </ul>
+            </div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Servicio de Chazas
+                </div>
+                <div class="archivo">app/services/chaza_service.py</div>
+                <ul class="items">
+                    <li>create_chaza() → Solo chazeros, asigna owner_id</li>
+                    <li>get_all_chazas() → Filtros, paginación</li>
+                    <li>update_chaza() → Solo el dueño puede</li>
+                    <li>delete_chaza() → Soft delete (is_active=false)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MÓDULO 6 -->
+        <div class="modulo">
+            <div class="modulo-header">M6: ENDPOINTS (API Pública)</div>
+            <div class="funcion">Ventanillas de atención al cliente</div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Rutas de Auth
+                </div>
+                <div class="archivo">app/api/routes/auth.py → /api/v1/auth</div>
+                <ul class="items">
+                    <li>POST /register → Sin auth</li>
+                    <li>POST /login → Sin auth</li>
+                    <li>GET /me → Requiere token</li>
+                </ul>
+            </div>
+
+            <div class="componente">
+                <div class="componente-header">
+                    <div class="checkbox"></div>
+                    Rutas de Chazas
+                </div>
+                <div class="archivo">app/api/routes/chazas.py → /api/v1/chazas</div>
+                <ul class="items">
+                    <li>POST / → Solo chazeros</li>
+                    <li>GET / → Sin auth (público)</li>
+                    <li>GET /{id} → Sin auth</li>
+                    <li>PUT /{id} → Solo dueño</li>
+                    <li>DELETE /{id} → Solo dueño</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="print-note">
+        Imprime esta página (Ctrl+P) y marca cada checkbox ☐ cuando entiendas el componente
+    </div>
+
+</body>
+</html>

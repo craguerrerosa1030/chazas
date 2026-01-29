@@ -1,0 +1,26 @@
+# FastAPI y servidor
+fastapi
+uvicorn[standard]
+gunicorn
+
+# Base de datos
+sqlalchemy
+psycopg2-binary
+aiosqlite
+
+# Autenticación y seguridad
+python-jose[cryptography]
+passlib
+bcrypt
+python-multipart
+
+# Validación
+pydantic
+pydantic-settings
+email-validator
+
+# Variables de entorno
+python-dotenv
+
+# Producción
+python-multipart
