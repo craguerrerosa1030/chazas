@@ -1,6 +1,7 @@
 """
 Punto de entrada principal de la API de Chazas.
 Configura FastAPI, CORS, rutas, y base de datos.
+Version: 2.0 - Incluye endpoint de contacto
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
