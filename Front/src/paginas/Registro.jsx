@@ -12,7 +12,8 @@ function Registro() {
     password: '',
     confirmPassword: '',
     tipoUsuario: 'estudiante',
-    universidadId: ''
+    universidadId: '',
+    aceptaTerminos: false
   });
   const [universidades, setUniversidades] = useState([]);
   const [loadingUniversidades, setLoadingUniversidades] = useState(true);
@@ -45,10 +46,10 @@ function Registro() {
   }, []);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : value
     });
 
     // Si cambia la universidad, actualizar dominios permitidos
@@ -246,7 +247,26 @@ function Registro() {
               placeholder="Repite la contraseña"
             />
           </div>
-          
+
+          <div className="form-group form-checkbox">
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                name="aceptaTerminos"
+                checked={formData.aceptaTerminos}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              />
+              <span>
+                Acepto la{' '}
+                <Link to="/privacidad" target="_blank">Política de Privacidad</Link>
+                {' '}y los{' '}
+                <Link to="/terminos" target="_blank">Términos y Condiciones</Link>
+              </span>
+            </label>
+          </div>
+
           <button 
             type="submit" 
             className="btn btn-primary"

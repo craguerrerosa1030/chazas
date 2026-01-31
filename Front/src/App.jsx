@@ -1,6 +1,7 @@
 import { AuthProvider } from './context/AuthContext';
 import { UniversidadProvider, useUniversidad } from './context/UniversidadContext';
 import Header from './componentes/Header';
+import Footer from './componentes/Footer';
 import AppRoutes from './routes/AppRoutes';
 import SelectorUniversidad from './componentes/SelectorUniversidad';
 
@@ -33,6 +34,9 @@ function AppContent() {
         <main className="main-content">
           <AppRoutes />
         </main>
+
+        {/* Footer con enlaces legales */}
+        <Footer />
       </div>
     </>
   );

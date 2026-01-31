@@ -12,6 +12,9 @@ import CrearChaza from '../paginas/CrearChaza';
 import DetalleChaza from '../paginas/DetalleChaza';
 import SobreNosotros from '../paginas/SobreNosotros';
 import Verificacion from '../paginas/Verificacion';
+import Contacto from '../paginas/Contacto';
+import PoliticaPrivacidad from '../paginas/PoliticaPrivacidad';
+import TerminosCondiciones from '../paginas/TerminosCondiciones';
 
 const AppRoutes = () =>{
     return(
@@ -20,6 +23,9 @@ const AppRoutes = () =>{
             <Route path="/" element = {<Navigate to= "/home" replace />}/>
             <Route path="/home" element={<Home />}/>
             <Route path="/sobre-nosotros" element={<SobreNosotros />}/>
+            <Route path="/contacto" element={<Contacto />}/>
+            <Route path="/privacidad" element={<PoliticaPrivacidad />}/>
+            <Route path="/terminos" element={<TerminosCondiciones />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/registro" element={<Registro/>}/>
             <Route path="/verificar-email" element={<Verificacion />}/>

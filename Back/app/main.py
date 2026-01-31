@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.database.session import init_db, SessionLocal
-from app.api.routes import auth, chazas, uploads, universidades, notificaciones, solicitudes
+from app.api.routes import auth, chazas, uploads, universidades, notificaciones, solicitudes, contacto
 from app.services.universidad_service import UniversidadService
 
 
@@ -61,6 +61,7 @@ app.include_router(chazas.router, prefix="/api/v1")
 app.include_router(uploads.router, prefix="/api/v1")
 app.include_router(notificaciones.router, prefix="/api/v1")
 app.include_router(solicitudes.router, prefix="/api/v1")
+app.include_router(contacto.router, prefix="/api/v1")
 
 
 # Ruta raíz

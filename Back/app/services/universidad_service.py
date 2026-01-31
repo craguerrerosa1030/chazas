@@ -143,17 +143,17 @@ class UniversidadService:
     @staticmethod
     def seed_universidades_iniciales(db: Session):
         """
-        Crea la universidad inicial: Universidad Nacional de Colombia - Sede Bogotá.
+        Crea la universidad inicial: UNAL Bogotá.
         Por ahora solo esta universidad está habilitada.
         """
         universidades_seed = [
             {
-                "nombre": "Universidad Nacional de Colombia - Sede Bogotá",
-                "nombre_corto": "UNAL Bogotá",
+                "nombre": "UNAL Bogotá",
+                "nombre_corto": "UNAL",
                 "dominios_correo": "unal.edu.co",
                 "ciudad": "Bogotá",
-                "descripcion": "Sede principal de la Universidad Nacional de Colombia, la universidad pública más importante del país.",
-                "color_primario": "#1e4d2b"
+                "descripcion": "Universidad pública en Bogotá. Esta plataforma no está afiliada oficialmente con la institución.",
+                "color_primario": "#6366f1"
             },
         ]
 

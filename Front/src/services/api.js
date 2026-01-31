@@ -374,3 +374,11 @@ export const verificationApi = {
         return api.postAuth('/auth/resend-verification', {}, token);
     },
 };
+
+// Funciones para contacto
+export const contactoApi = {
+    // Enviar mensaje de contacto (no requiere autenticacion)
+    enviar: async (datos) => {
+        return api.post('/contacto/', datos);
+    },
+};
