@@ -184,3 +184,79 @@ class EmailService:
             VerificationCode.is_used == False,
             VerificationCode.expires_at > datetime.now(timezone.utc)
         ).first()
+
+    @staticmethod
+    def send_contact_notification(
+        nombre: str,
+        email_remitente: str,
+        asunto: str,
+        mensaje: str,
+        admin_email: str = "craguerrerosa@gmail.com"
+    ) -> bool:
+        """
+        Envía notificación al administrador cuando alguien usa el formulario de contacto.
+        """
+        if not settings.SMTP_USER or not settings.SMTP_PASSWORD:
+            print(f">> SMTP no configurado. Mensaje de contacto de: {email_remitente}")
+            return True
+
+        try:
+            msg = MIMEMultipart('alternative')
+            msg['Subject'] = f'[Chazas Contacto] {asunto}'
+            msg['From'] = f'{settings.SMTP_FROM_NAME} <{settings.SMTP_USER}>'
+            msg['To'] = admin_email
+            msg['Reply-To'] = email_remitente
+
+            html = f"""
+            <html>
+            <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+                <div style="background: linear-gradient(135deg, #3498db, #2980b9); padding: 20px; text-align: center; border-radius: 12px 12px 0 0;">
+                    <h1 style="color: white; margin: 0; font-size: 24px;">Nuevo mensaje de contacto</h1>
+                </div>
+
+                <div style="padding: 25px; background: #f9f9f9; border-radius: 0 0 12px 12px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold; width: 120px;">De:</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">{nombre or 'No especificado'}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Email:</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+                                <a href="mailto:{email_remitente}" style="color: #3498db;">{email_remitente}</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Asunto:</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">{asunto}</td>
+                        </tr>
+                    </table>
+
+                    <div style="margin-top: 20px;">
+                        <h3 style="color: #333; margin-bottom: 10px;">Mensaje:</h3>
+                        <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #3498db;">
+                            <p style="margin: 0; white-space: pre-wrap; color: #555;">{mensaje}</p>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 20px; padding: 10px; background: #e8f4fd; border-radius: 6px; font-size: 13px; color: #2980b9;">
+                        Puedes responder directamente a este email - la respuesta llegara a {email_remitente}
+                    </p>
+                </div>
+            </body>
+            </html>
+            """
+
+            msg.attach(MIMEText(html, 'html'))
+
+            with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT) as server:
+                server.starttls()
+                server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
+                server.sendmail(settings.SMTP_USER, admin_email, msg.as_string())
+
+            print(f">> Notificacion de contacto enviada a {admin_email}")
+            return True
+
+        except Exception as e:
+            print(f">> Error enviando notificacion de contacto: {e}")
+            return False
