@@ -3,6 +3,7 @@ Servicio de Email para envío de códigos de verificación.
 Usa SMTP para enviar emails con códigos de 6 dígitos.
 """
 import smtplib
+import ssl
 import random
 import string
 from email.mime.text import MIMEText
@@ -162,8 +163,9 @@ class EmailService:
 
             msg.attach(MIMEText(html, 'html'))
 
-            with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT) as server:
-                server.starttls()
+            # Usar SSL en puerto 465 (funciona mejor en Railway)
+            context = ssl.create_default_context()
+            with smtplib.SMTP_SSL(settings.SMTP_HOST, 465, context=context) as server:
                 server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
                 server.sendmail(settings.SMTP_USER, to_email, msg.as_string())
 
@@ -249,8 +251,9 @@ class EmailService:
 
             msg.attach(MIMEText(html, 'html'))
 
-            with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT) as server:
-                server.starttls()
+            # Usar SSL en puerto 465 (funciona mejor en Railway)
+            context = ssl.create_default_context()
+            with smtplib.SMTP_SSL(settings.SMTP_HOST, 465, context=context) as server:
                 server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
                 server.sendmail(settings.SMTP_USER, admin_email, msg.as_string())
 
