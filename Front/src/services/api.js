@@ -1,13 +1,10 @@
-// URL base del backend - FORZADO para producción
-const API_BASE = window.location.hostname === 'localhost'
-    ? 'http://localhost:8000'
-    : 'https://chazas-production.up.railway.app';
+// URL base del backend - HARDCODED para producción
+const API_BASE = 'https://chazas-production.up.railway.app';
+const API_URL = 'https://chazas-production.up.railway.app/api/v1';
 
-const API_URL = `${API_BASE}/api/v1`;
-
-// Debug - remover después
+// Debug
 console.log('API_BASE:', API_BASE);
-console.log('hostname:', window.location.hostname);
+console.log('API_URL:', API_URL);
 
 // URL para archivos estáticos (imágenes)
 export const getStaticUrl = (path) => {
