@@ -28,3 +28,6 @@ python-multipart
 
 # Cloudinary para imágenes
 cloudinary
+
+# Email con Resend (API HTTP, funciona en Railway)
+resend

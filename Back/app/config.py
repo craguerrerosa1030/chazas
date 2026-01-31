@@ -43,6 +43,10 @@ class Settings(BaseSettings):
     CLOUDINARY_API_KEY: str = ""
     CLOUDINARY_API_SECRET: str = ""
 
+    # Resend - Servicio de email (API HTTP)
+    RESEND_API_KEY: str = ""
+    ADMIN_EMAIL: str = "craguerrerosa@gmail.com"
+
     class Config:
         env_file = ".env"
         case_sensitive = True
