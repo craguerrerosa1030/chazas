@@ -40,7 +40,8 @@ def on_startup():
     Crea las tablas en la base de datos si no existen.
     Crea universidades iniciales si no existen.
     """
-    print(">> Iniciando API de Chazas...")
+    print(">> Iniciando API de Chazas v2.0 CON CONTACTO...")
+    print(">> CONTACTO ENDPOINT HABILITADO")
     init_db()
 
     # Crear universidades iniciales
