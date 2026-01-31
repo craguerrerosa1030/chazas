@@ -1,6 +1,6 @@
 // URL base del backend
 // Usa variable de entorno si existe, sino usa URL de produccion
-const API_BASE = process.env.REACT_APP_API_URL || 'https://chazas-production.up.railway.app';
+const API_BASE = process.env.REACT_APP_API_URL || 'https://intuitive-radiance-production.up.railway.app';
 const API_URL = `${API_BASE}/api/v1`;
 
 // URL para archivos estáticos (imágenes)
