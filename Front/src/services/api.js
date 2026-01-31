@@ -1,10 +1,7 @@
-// URL base del backend - HARDCODED para producción
-const API_BASE = 'https://chazas-production.up.railway.app';
-const API_URL = 'https://chazas-production.up.railway.app/api/v1';
-
-// Debug
-console.log('API_BASE:', API_BASE);
-console.log('API_URL:', API_URL);
+// URL base del backend
+// Usa variable de entorno si existe, sino usa URL de produccion
+const API_BASE = process.env.REACT_APP_API_URL || 'https://chazas-production.up.railway.app';
+const API_URL = `${API_BASE}/api/v1`;
 
 // URL para archivos estáticos (imágenes)
 export const getStaticUrl = (path) => {
