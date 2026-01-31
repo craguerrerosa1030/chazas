@@ -1,15 +1,13 @@
-// URL base del backend
-const getApiBase = () => {
-    // En producción (Vercel), usar la URL de Railway con HTTPS
-    if (window.location.hostname !== 'localhost') {
-        return 'https://chazas-production.up.railway.app';
-    }
-    // En desarrollo local
-    return 'http://localhost:8000';
-};
+// URL base del backend - FORZADO para producción
+const API_BASE = window.location.hostname === 'localhost'
+    ? 'http://localhost:8000'
+    : 'https://chazas-production.up.railway.app';
 
-const API_BASE = getApiBase();
 const API_URL = `${API_BASE}/api/v1`;
+
+// Debug - remover después
+console.log('API_BASE:', API_BASE);
+console.log('hostname:', window.location.hostname);
 
 // URL para archivos estáticos (imágenes)
 export const getStaticUrl = (path) => {
