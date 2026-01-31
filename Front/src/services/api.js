@@ -1,10 +1,6 @@
-// URL base del backend - usa variable de entorno en producción
+// URL base del backend
 const getApiBase = () => {
-    // Si hay variable de entorno, usarla
-    if (process.env.REACT_APP_API_URL) {
-        return process.env.REACT_APP_API_URL;
-    }
-    // En producción (Vercel), usar la URL de Railway
+    // En producción (Vercel), usar la URL de Railway con HTTPS
     if (window.location.hostname !== 'localhost') {
         return 'https://chazas-production.up.railway.app';
     }
