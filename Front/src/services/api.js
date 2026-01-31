@@ -1,5 +1,18 @@
 // URL base del backend - usa variable de entorno en producción
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+const getApiBase = () => {
+    // Si hay variable de entorno, usarla
+    if (process.env.REACT_APP_API_URL) {
+        return process.env.REACT_APP_API_URL;
+    }
+    // En producción (Vercel), usar la URL de Railway
+    if (window.location.hostname !== 'localhost') {
+        return 'https://chazas-production.up.railway.app';
+    }
+    // En desarrollo local
+    return 'http://localhost:8000';
+};
+
+const API_BASE = getApiBase();
 const API_URL = `${API_BASE}/api/v1`;
 
 // URL para archivos estáticos (imágenes)
