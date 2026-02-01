@@ -1,26 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
-import { verificationApi } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 
-function VerificarEmail({ onVerified, onSkip }) {
-    const { token, user, updateUser } = useAuth();
+function VerificarEmail({ email, onVerified }) {
+    const { verifyRegistration, resendRegistrationCode } = useAuth();
     const [code, setCode] = useState(['', '', '', '', '', '']);
     const [loading, setLoading] = useState(false);
     const [sending, setSending] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const [countdown, setCountdown] = useState(0);
-    const [emailSent, setEmailSent] = useState(false);
+    const [countdown, setCountdown] = useState(60);
     const inputRefs = useRef([]);
 
-    // Enviar código automáticamente al montar
-    useEffect(() => {
-        if (!emailSent && token) {
-            handleSendCode();
-        }
-    }, [token]);
-
-    // Countdown para reenvío
+    // Countdown para reenvio (inicia en 60 porque el codigo ya fue enviado al registrar)
     useEffect(() => {
         if (countdown > 0) {
             const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
@@ -28,16 +19,18 @@ function VerificarEmail({ onVerified, onSkip }) {
         }
     }, [countdown]);
 
-    const handleSendCode = async () => {
+    const handleResendCode = async () => {
         setSending(true);
         setError('');
         try {
-            await verificationApi.sendCode(token);
-            setEmailSent(true);
-            setSuccess('Código enviado a ' + user.email);
-            setCountdown(60);
-            // Limpiar mensaje de éxito después de 5 segundos
-            setTimeout(() => setSuccess(''), 5000);
+            const result = await resendRegistrationCode(email);
+            if (result.success) {
+                setSuccess('Codigo reenviado a ' + email);
+                setCountdown(60);
+                setTimeout(() => setSuccess(''), 5000);
+            } else {
+                setError(result.error);
+            }
         } catch (err) {
             setError(err.message);
         } finally {
@@ -78,17 +71,21 @@ function VerificarEmail({ onVerified, onSkip }) {
     const handleVerify = async () => {
         const fullCode = code.join('');
         if (fullCode.length !== 6) {
-            setError('Ingresa el código completo de 6 dígitos');
+            setError('Ingresa el codigo completo de 6 digitos');
             return;
         }
 
         setLoading(true);
         setError('');
         try {
-            const result = await verificationApi.verifyCode(fullCode, token);
-            if (result.is_verified) {
-                updateUser({ ...user, is_verified: true });
+            const result = await verifyRegistration(email, fullCode);
+            if (result.success) {
+                // Usuario creado y logueado automaticamente
                 onVerified();
+            } else {
+                setError(result.error);
+                setCode(['', '', '', '', '', '']);
+                inputRefs.current[0]?.focus();
             }
         } catch (err) {
             setError(err.message);
@@ -106,8 +103,8 @@ function VerificarEmail({ onVerified, onSkip }) {
                     <span className="verificar-icon">📧</span>
                     <h2>Verifica tu correo</h2>
                     <p>
-                        Enviamos un código de 6 dígitos a<br/>
-                        <strong>{user?.email}</strong>
+                        Enviamos un codigo de 6 digitos a<br/>
+                        <strong>{email}</strong>
                     </p>
                 </div>
 
@@ -137,37 +134,27 @@ function VerificarEmail({ onVerified, onSkip }) {
                     onClick={handleVerify}
                     disabled={loading || sending || code.join('').length !== 6}
                 >
-                    {loading ? 'Verificando...' : 'Verificar código'}
+                    {loading ? 'Verificando...' : 'Verificar codigo'}
                 </button>
 
                 <div className="resend-section">
-                    <p>¿No recibiste el código?</p>
+                    <p>¿No recibiste el codigo?</p>
                     <button
                         className="btn-link"
-                        onClick={handleSendCode}
+                        onClick={handleResendCode}
                         disabled={loading || sending || countdown > 0}
                     >
                         {sending
                             ? 'Enviando...'
                             : countdown > 0
                                 ? `Reenviar en ${countdown}s`
-                                : 'Reenviar código'}
+                                : 'Reenviar codigo'}
                     </button>
                 </div>
 
-                {onSkip && (
-                    <button
-                        className="btn-skip"
-                        onClick={onSkip}
-                        disabled={loading || sending}
-                    >
-                        Verificar después
-                    </button>
-                )}
-
                 <p className="verificar-disclaimer">
-                    El código expira en 15 minutos.<br/>
-                    Revisa también tu carpeta de spam.
+                    El codigo expira en 15 minutos.<br/>
+                    Revisa tambien tu carpeta de spam.
                 </p>
             </div>
         </div>

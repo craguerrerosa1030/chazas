@@ -57,7 +57,7 @@ def init_db():
     Se debe llamar al inicio de la aplicación.
     """
     # Importar todos los modelos aquí para que SQLAlchemy los conozca
-    from app.models import user, chaza, universidad, notificacion, solicitud
+    from app.models import user, chaza, universidad, notificacion, solicitud, pending_registration
 
     # Crear todas las tablas
     Base.metadata.create_all(bind=engine)

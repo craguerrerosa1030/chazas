@@ -13,20 +13,23 @@ export const useAuth = () => {
   return context;
 };
 
-// Keys para localStorage (solo guardamos token y usuario, no base de datos falsa)
+// Keys para localStorage
 const TOKEN_KEY = 'chazas_token';
 const USER_KEY = 'chazas_user';
+const PENDING_EMAIL_KEY = 'chazas_pending_email';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [pendingEmail, setPendingEmail] = useState(null);
 
-  // Cargar sesión al iniciar la app
+  // Cargar sesion al iniciar la app
   useEffect(() => {
     const savedToken = localStorage.getItem(TOKEN_KEY);
     const savedUser = localStorage.getItem(USER_KEY);
-    
+    const savedPendingEmail = localStorage.getItem(PENDING_EMAIL_KEY);
+
     if (savedToken && savedUser) {
       try {
         setToken(savedToken);
@@ -36,19 +39,47 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem(USER_KEY);
       }
     }
+
+    if (savedPendingEmail) {
+      setPendingEmail(savedPendingEmail);
+    }
+
     setLoading(false);
   }, []);
 
-  // Función de registro - AHORA USA LA API REAL
+  // Funcion de registro - Ahora crea registro pendiente y envia codigo
   const register = async (userData) => {
     try {
-      // Llamar al backend
+      // Llamar al backend - ahora devuelve requires_verification
       const response = await api.post('/auth/register', {
         nombre: userData.nombre,
         email: userData.email,
         password: userData.password,
-        tipo_usuario: userData.tipoUsuario,  // El backend espera tipo_usuario
-        universidad_id: userData.universidadId  // ID de la universidad
+        tipo_usuario: userData.tipoUsuario,
+        universidad_id: userData.universidadId
+      });
+
+      // Guardar email pendiente para la verificacion
+      localStorage.setItem(PENDING_EMAIL_KEY, userData.email);
+      setPendingEmail(userData.email);
+
+      return {
+        success: true,
+        requiresVerification: true,
+        email: userData.email,
+        message: response.message
+      };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  };
+
+  // Funcion para verificar registro y crear usuario
+  const verifyRegistration = async (email, code) => {
+    try {
+      const response = await api.post('/auth/verify-registration', {
+        email: email,
+        code: code
       });
 
       // Guardar token y usuario
@@ -56,9 +87,11 @@ export const AuthProvider = ({ children }) => {
 
       localStorage.setItem(TOKEN_KEY, access_token);
       localStorage.setItem(USER_KEY, JSON.stringify(userResponse));
+      localStorage.removeItem(PENDING_EMAIL_KEY);
 
       setToken(access_token);
       setUser(userResponse);
+      setPendingEmail(null);
 
       return { success: true, user: userResponse };
     } catch (error) {
@@ -66,21 +99,31 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Función de login - AHORA USA LA API REAL
+  // Funcion para reenviar codigo de registro
+  const resendRegistrationCode = async (email) => {
+    try {
+      const response = await api.post('/auth/resend-registration-code', {
+        email: email
+      });
+      return { success: true, message: response.message };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  };
+
+  // Funcion de login
   const login = async (email, password) => {
     try {
-      // Llamar al backend
       const response = await api.post('/auth/login', {
         email: email,
         password: password
       });
 
-      // Guardar token y usuario
       const { access_token, user: userResponse } = response;
-      
+
       localStorage.setItem(TOKEN_KEY, access_token);
       localStorage.setItem(USER_KEY, JSON.stringify(userResponse));
-      
+
       setToken(access_token);
       setUser(userResponse);
 
@@ -90,26 +133,28 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Función de logout
+  // Funcion de logout
   const logout = () => {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);
+    localStorage.removeItem(PENDING_EMAIL_KEY);
     setToken(null);
     setUser(null);
+    setPendingEmail(null);
   };
 
-  // Función para actualizar datos del usuario (ej: después de verificar email)
+  // Funcion para actualizar datos del usuario
   const updateUser = (updatedUser) => {
     setUser(updatedUser);
     localStorage.setItem(USER_KEY, JSON.stringify(updatedUser));
   };
 
-  // Verificar si está logueado
+  // Verificar si esta logueado
   const isAuthenticated = () => {
     return user !== null && token !== null;
   };
 
-  // Verificar si el email está verificado
+  // Verificar si el email esta verificado
   const isVerified = () => {
     return user?.is_verified === true;
   };
@@ -127,8 +172,11 @@ export const AuthProvider = ({ children }) => {
     user,
     token,
     loading,
+    pendingEmail,
     login,
     register,
+    verifyRegistration,
+    resendRegistrationCode,
     logout,
     updateUser,
     isAuthenticated,

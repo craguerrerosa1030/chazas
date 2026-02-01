@@ -5,39 +5,35 @@ import { useEffect } from 'react';
 
 function Verificacion() {
     const navigate = useNavigate();
-    const { user, isAuthenticated, isVerified } = useAuth();
+    const { pendingEmail, isAuthenticated } = useAuth();
 
     useEffect(() => {
-        // Si no está logueado, ir a login
-        if (!isAuthenticated()) {
-            navigate('/login');
+        // Si ya esta logueado, ir a dashboard
+        if (isAuthenticated()) {
+            navigate('/dashboard');
             return;
         }
-        // Si ya está verificado, ir a dashboard
-        if (isVerified()) {
-            navigate('/dashboard');
+        // Si no hay email pendiente, ir a registro
+        if (!pendingEmail) {
+            navigate('/registro');
         }
-    }, [user, isAuthenticated, isVerified, navigate]);
+    }, [pendingEmail, isAuthenticated, navigate]);
 
     const handleVerified = () => {
+        // Usuario creado y logueado automaticamente, ir a dashboard
         navigate('/dashboard');
     };
 
-    const handleSkip = () => {
-        // Permitir uso limitado sin verificar
-        navigate('/dashboard');
-    };
-
-    // Si está verificado o no autenticado, no mostrar nada (se redirige)
-    if (!isAuthenticated() || isVerified()) {
+    // Si ya esta autenticado o no hay email pendiente, no mostrar nada (se redirige)
+    if (isAuthenticated() || !pendingEmail) {
         return null;
     }
 
     return (
         <div className="verificacion-page">
             <VerificarEmail
+                email={pendingEmail}
                 onVerified={handleVerified}
-                onSkip={handleSkip}
             />
         </div>
     );
