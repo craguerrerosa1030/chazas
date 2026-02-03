@@ -134,7 +134,7 @@ class EmailService:
             """
 
             params = {
-                "from": "Chazas <onboarding@resend.dev>",
+                "from": "Chazas <verificacion@chazas.site>",
                 "to": [to_email],
                 "subject": f"Verifica tu cuenta en Chazas - Codigo: {code}",
                 "html": html
@@ -211,7 +211,7 @@ class EmailService:
             """
 
             params = {
-                "from": "Chazas Contacto <onboarding@resend.dev>",
+                "from": "Chazas Contacto <contacto@chazas.site>",
                 "to": [settings.ADMIN_EMAIL],
                 "reply_to": email_remitente,
                 "subject": f"[Chazas Contacto] {asunto}",
