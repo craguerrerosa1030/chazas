@@ -147,7 +147,6 @@ function Home() {
         <div className="container">
           <div className="chazas-grid-header">
             <h2>Chazas Disponibles</h2>
-            <p>Descubre las mejores chazas cerca de la universidad</p>
           </div>
 
           {/* Buscador y Filtros */}
