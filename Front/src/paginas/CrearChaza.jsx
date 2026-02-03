@@ -129,12 +129,12 @@ function CrearChaza() {
       nuevosErrores.descripcion = 'La descripción debe tener al menos 10 caracteres';
     }
 
-    if (!formData.telefono.trim()) {
-      nuevosErrores.telefono = 'El WhatsApp es obligatorio para que te contacten';
-    } else if (!/^[0-9\-\+\(\)\s]+$/.test(formData.telefono)) {
-      nuevosErrores.telefono = 'Número de WhatsApp inválido';
-    } else if (formData.telefono.replace(/\D/g, '').length < 10) {
-      nuevosErrores.telefono = 'El número debe tener al menos 10 dígitos';
+    if (formData.telefono.trim()) {
+      if (!/^[0-9\-\+\(\)\s]+$/.test(formData.telefono)) {
+        nuevosErrores.telefono = 'Número de WhatsApp inválido';
+      } else if (formData.telefono.replace(/\D/g, '').length < 10) {
+        nuevosErrores.telefono = 'El número debe tener al menos 10 dígitos';
+      }
     }
 
     setErrors(nuevosErrores);
@@ -250,7 +250,7 @@ function CrearChaza() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="telefono">WhatsApp de contacto *</label>
+                <label htmlFor="telefono">WhatsApp de contacto (opcional)</label>
                 <input
                   type="tel"
                   id="telefono"
