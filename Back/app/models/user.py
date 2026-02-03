@@ -24,7 +24,7 @@ class User(Base):
     tipo_usuario = Column(String(20), nullable=False)  # 'estudiante' o 'chazero'
 
     # Universidad a la que pertenece
-    universidad_id = Column(Integer, ForeignKey("universidades.id"), nullable=False)
+    universidad_id = Column(Integer, ForeignKey("universidades.id"), nullable=False, index=True)
 
     # Estado de la cuenta
     is_active = Column(Boolean, default=True)

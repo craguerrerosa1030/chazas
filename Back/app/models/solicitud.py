@@ -27,11 +27,11 @@ class Solicitud(Base):
     id = Column(Integer, primary_key=True, index=True)
 
     # Estudiante que envía la solicitud
-    estudiante_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    estudiante_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     estudiante = relationship("User", foreign_keys=[estudiante_id], backref="solicitudes_enviadas")
 
     # Chaza a la que se postula
-    chaza_id = Column(Integer, ForeignKey("chazas.id"), nullable=False)
+    chaza_id = Column(Integer, ForeignKey("chazas.id"), nullable=False, index=True)
     chaza = relationship("Chaza", backref="solicitudes_recibidas")
 
     # Horarios seleccionados (formato JSON: ["0-8", "0-9", "1-10", ...])
@@ -42,7 +42,7 @@ class Solicitud(Base):
     mensaje = Column(Text, nullable=True)
 
     # Estado de la solicitud
-    estado = Column(Enum(EstadoSolicitud), default=EstadoSolicitud.PENDIENTE)
+    estado = Column(Enum(EstadoSolicitud), default=EstadoSolicitud.PENDIENTE, index=True)
 
     # Timestamps
     created_at = Column(DateTime, default=datetime.utcnow)

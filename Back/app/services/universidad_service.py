@@ -7,9 +7,13 @@ from fastapi import HTTPException
 from typing import List
 import re
 import unicodedata
+from cachetools import TTLCache
 
 from app.models.universidad import Universidad
 from app.schemas.universidad import UniversidadCreate, UniversidadUpdate, UniversidadResponse, UniversidadSimple
+
+# Cache de universidades: max 10 entradas, expira cada 1 hora (3600 seg)
+_universidades_cache = TTLCache(maxsize=10, ttl=3600)
 
 
 def generar_slug_universidad(nombre_corto: str) -> str:
@@ -27,12 +31,19 @@ class UniversidadService:
 
     @staticmethod
     def get_all(db: Session, solo_activas: bool = True) -> List[UniversidadSimple]:
-        """Obtiene todas las universidades."""
+        """Obtiene todas las universidades. Usa cache de 1 hora."""
+        cache_key = f"all_{solo_activas}"
+        if cache_key in _universidades_cache:
+            return _universidades_cache[cache_key]
+
         query = db.query(Universidad)
         if solo_activas:
             query = query.filter(Universidad.is_active == True)
         universidades = query.order_by(Universidad.nombre).all()
-        return [UniversidadSimple.model_validate(u) for u in universidades]
+        resultado = [UniversidadSimple.model_validate(u) for u in universidades]
+
+        _universidades_cache[cache_key] = resultado
+        return resultado
 
     @staticmethod
     def get_by_id(db: Session, universidad_id: int) -> UniversidadResponse:
@@ -86,6 +97,7 @@ class UniversidadService:
         db.commit()
         db.refresh(nueva_universidad)
 
+        _universidades_cache.clear()
         return UniversidadResponse.model_validate(nueva_universidad)
 
     @staticmethod
@@ -107,6 +119,7 @@ class UniversidadService:
         db.commit()
         db.refresh(universidad)
 
+        _universidades_cache.clear()
         return UniversidadResponse.model_validate(universidad)
 
     @staticmethod

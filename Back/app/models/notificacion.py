@@ -26,7 +26,7 @@ class Notificacion(Base):
     id = Column(Integer, primary_key=True, index=True)
 
     # Usuario que recibe la notificacion
-    usuario_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    usuario_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     usuario = relationship("User", back_populates="notificaciones")
 
     # Tipo de notificacion
@@ -37,14 +37,14 @@ class Notificacion(Base):
     mensaje = Column(Text, nullable=False)
 
     # Estado
-    leida = Column(Boolean, default=False)
+    leida = Column(Boolean, default=False, index=True)
 
     # Referencias opcionales (para navegar al contenido relacionado)
     chaza_id = Column(Integer, ForeignKey("chazas.id"), nullable=True)
     # postulacion_id se omite temporalmente - agregar manualmente a la DB si se necesita
 
     # Timestamps
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.utcnow, index=True)
     read_at = Column(DateTime, nullable=True)
 
     # Relaciones opcionales

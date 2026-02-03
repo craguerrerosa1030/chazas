@@ -34,7 +34,7 @@ class Chaza(Base):
     titulo = Column(String(200), nullable=False)
     slug = Column(String(250), unique=True, index=True, nullable=False)  # URL amigable
     descripcion = Column(Text, nullable=False)
-    categoria = Column(String(50), nullable=False)  # Ej: "plomería", "electricidad", etc.
+    categoria = Column(String(50), nullable=False, index=True)  # Ej: "plomería", "electricidad", etc.
 
     # Información del trabajo
     precio = Column(Float, nullable=True)  # Puede ser null si el precio es "a convenir"
@@ -44,14 +44,14 @@ class Chaza(Base):
     imagen_url = Column(String(500), nullable=True)  # URL de la imagen de la chaza
 
     # Relación con el dueño (chazero)
-    owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    owner_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     # owner = relationship("User", back_populates="chazas")
 
     # Universidad a la que pertenece la chaza
-    universidad_id = Column(Integer, ForeignKey("universidades.id"), nullable=False)
+    universidad_id = Column(Integer, ForeignKey("universidades.id"), nullable=False, index=True)
 
     # Estado
-    is_active = Column(Boolean, default=True)  # Si la chaza está disponible
+    is_active = Column(Boolean, default=True, index=True)  # Si la chaza está disponible
     is_completed = Column(Boolean, default=False)  # Si ya fue completada
 
     # Timestamps
@@ -75,7 +75,7 @@ class HorarioTrabajo(Base):
     __tablename__ = "horarios_trabajo"
 
     id = Column(Integer, primary_key=True, index=True)
-    chaza_id = Column(Integer, ForeignKey("chazas.id"), nullable=False)
+    chaza_id = Column(Integer, ForeignKey("chazas.id"), nullable=False, index=True)
 
     # Dia de la semana (0=Lunes, 6=Domingo)
     dia_semana = Column(Integer, nullable=False)  # 0-6
